@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface getInfoServices {
 
-    ResultItunes infoArtists(String termino);
+    ResultItunes infoArtists(String termino) throws Exception;
     void infoPersonas(String termino);
-    List<Tvmaze> infoTvmaze(String termino);
+    List<Tvmaze> infoTvmaze(String termino) throws Exception;
 }
 
 
