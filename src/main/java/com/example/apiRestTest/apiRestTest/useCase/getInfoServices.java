@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface getInfoServices {
 
-    List<ResultItunes> infoArtists(String termino);
+    ResultItunes infoArtists(String termino);
     void infoPersonas(String termino);
     List<Tvmaze> infoTvmaze(String termino);
 }
