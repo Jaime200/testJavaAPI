@@ -1,6 +1,6 @@
 package com.example.apiRestTest.apiRestTest.Controller;
 
-
+import com.example.apiRestTest.apiRestTest.Entity.RespApi;
 import com.example.apiRestTest.apiRestTest.Entity.ResultItunes;
 import com.example.apiRestTest.apiRestTest.useCase.getInfoServices;
 import org.springframework.http.HttpStatus;
@@ -18,9 +18,12 @@ public class infoController {
     }
     @GetMapping("/")
     @ResponseBody
-    public ResponseEntity<ResultItunes>  get(@RequestParam("termino")String termino) throws Exception {
+    public ResponseEntity<RespApi>  get(@RequestParam("termino")String termino) throws Exception {
         try{
-            return new ResponseEntity<ResultItunes>(this._getInfoServices.infoArtists(termino), HttpStatus.OK);
+            RespApi respuesta = new RespApi();
+            respuesta.setResultItunes(_getInfoServices.infoArtists(termino));
+            respuesta.setResultTvmaze(_getInfoServices.infoTvmaze(termino));
+            return new ResponseEntity<RespApi>(respuesta, HttpStatus.OK);
         }catch (Exception e){
          throw  new Exception(e.getMessage());
         }
